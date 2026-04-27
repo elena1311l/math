@@ -1,4 +1,5 @@
 import random
+import numpy as np
 '''
 Math is 
 1/10*1/10*1/10=1/1000=0.001 for Seven
@@ -20,23 +21,29 @@ reel2 = ["Seven"] * 1 + ["Cherry"] * 2 + ["Lemon"] * 7
 reel3 = ["Seven"] * 1 + ["Cherry"] * 1 + ["Lemon"] * 8
 
 def simulate_slots(spins=100000):
-    total_payout = 0
+    payouts = []
     
     for _ in range(spins):
         result1=random.choice(reel1)
         result2=random.choice(reel2)
         result3=random.choice(reel3)
+
+        current_payout = 0
+
         if result1==result2==result3=="Seven":
             print('Plus 100')
-            total_payout+=100
+            current_payout = 100
         elif result1==result2==result3=="Cherry":
             print('Plus 10')
-            total_payout+=10
+            current_payout = 10
         elif result1==result2==result3=="Lemon":
             print('Plus 3')
-            total_payout+=3
-        else:
-            print('Any combination')
+            current_payout = 3
+        payouts.append(current_payout)
 
-    return total_payout / spins
-print(simulate_slots())
+    total_payout = np.array(payouts)
+    mean_value = np.mean(total_payout)
+    return mean_value, 
+
+tmp = simulate_slots()
+print(f'This is the average payout per spin: {tmp}')
