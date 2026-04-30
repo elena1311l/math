@@ -1,0 +1,14 @@
+{
+  "game_name": "Fruit Paradise",
+  "results": [
+    0.91853,
+    0.90272,
+    0.9005466666666667,
+    0.9120378947368422
+  ],
+  "settings": {
+    "seven_win": 150,
+    "cherry_win": 15,
+    "lemon_win": 2
+  }
+}
